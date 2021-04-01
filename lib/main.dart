@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
     return Expanded(child: Container(
       margin: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
-          color: Colors.grey[900],
+          color: (btnval =="+"||btnval =="-"||btnval =="*"||btnval =="/")? Colors.orange[900]: Colors.grey[900],
         borderRadius: BorderRadius.circular(50.0),
         boxShadow: [
           // BoxShadow(
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                       cal_btn("4"),
                       cal_btn("5"),
                       cal_btn("6"),
-                      cal_btn("*"),
+                      cal_btn("-"),
                     ],
                   ),
                   Row(
