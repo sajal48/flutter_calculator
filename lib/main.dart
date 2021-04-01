@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,7 +9,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return NeumorphicApp(
+      themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
@@ -89,31 +91,33 @@ class _HomePageState extends State<HomePage> {
   {
     return Expanded(child: Container(
       margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-          color: (btnval =="+"||btnval =="-"||btnval =="*"||btnval =="/")? Colors.orange[900]: Colors.grey[900],
-        borderRadius: BorderRadius.circular(50.0),
-        boxShadow: [
-          // BoxShadow(
-          //   color: Colors.grey[500],
-          //   offset: Offset(2.0,2.0),
-          //   blurRadius: 8.0,
-          //   spreadRadius: 1.0
-          // ),
-          // BoxShadow(
-          //     color: Colors.grey[900],
-          //     offset: Offset(-2.0,-2.0),
-          //     blurRadius: 8.0,
-          //     spreadRadius: 1.0
-          // )
+      //decoration: BoxDecoration(
+          //color: (btnval =="+"||btnval =="-"||btnval =="*"||btnval =="/")? Colors.orange[900]: Colors.grey[900],
+        // borderRadius: BorderRadius.circular(50.0),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey[500],
+        //     offset: Offset(2.0,2.0),
+        //     blurRadius: 8.0,
+        //     spreadRadius: 1.0
+        //   ),
+        //   BoxShadow(
+        //       color: Colors.grey[900],
+        //       offset: Offset(-2.0,-2.0),
+        //       blurRadius: 8.0,
+        //       spreadRadius: 1.0
+        //   )
+        //
+        // ]
+     // ),
 
-        ]
-      ),
-
-      child: MaterialButton(
+      child: NeumorphicButton(
         padding: EdgeInsets.all(30.0),
 
-        child: Text(btnval,style: TextStyle(
-          fontSize: 22.0,color: Colors.white),),
+        child: Center(
+          child: Text(btnval,style: TextStyle(
+            fontSize: 22.0,color: Colors.black,),),
+        ),
         onPressed: (){
           Calculation(btnval);
         },
@@ -125,7 +129,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: NeumorphicTheme.baseColor(context),
         body: Container(
           child: Column(
             children: [
@@ -133,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.bottomRight,
                 padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 50.0),
                 child: Text(Output ,
-                  style: TextStyle( fontSize: 60.0,color: Colors.white),),
+                  style: TextStyle( fontSize: 60.0,color: Colors.black),),
               ),
               
               Expanded(child: Divider()),
@@ -144,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       cal_btn("."),
                       cal_btn("C"),
-                      cal_btn("<"),
+                      cal_btn("0"),
                       cal_btn("*"),
                     ],
                   ),
@@ -176,8 +180,9 @@ class _HomePageState extends State<HomePage> {
 
                   Row(
                     children: [
-                      cal_btn("0"),
+                      Spacer(),
                       cal_btn("="),
+
                     ],
                   ),
                   
